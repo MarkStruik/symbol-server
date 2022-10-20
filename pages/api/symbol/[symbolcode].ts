@@ -1,6 +1,7 @@
 import ms from 'milsymbol'
 import { NextApiRequest, NextApiResponse } from 'next';
-const Canvas = require("canvas");
+
+import asNodeCanvas from './symbol.extensions';
 
 export default function handler(req : NextApiRequest, res: NextApiResponse) {
     const symbolcodeData = (req.query.symbolcode as string)?.split('.')
@@ -11,7 +12,7 @@ export default function handler(req : NextApiRequest, res: NextApiResponse) {
 
       if ( symbolcodeData[1]?.toUpperCase() === "PNG"){
         res.setHeader("Content-Type", "image/png");
-        res.send(asNodeCanvas(symbol).pngStream())
+        res.send((asNodeCanvas(symbol) as any).pngStream())
       }
       else {
         // if not requesting a png specifically we return svg
@@ -22,20 +23,4 @@ export default function handler(req : NextApiRequest, res: NextApiResponse) {
     }
   }
 
-  function asNodeCanvas(symbol: ms.Symbol) {
-    const MAX_SIZE = 2000; // Maximum width/hight for the canvas to aviod out of memory
-    ms._brokenPath2D = true; // Make it use our custom polyfill for Path2D
-    const ratio = 1;
-    const canvas = Canvas.createCanvas(
-      Math.min(symbol.width, MAX_SIZE),
-      Math.min(symbol.height, MAX_SIZE)
-    );
-    const ctx = canvas.getContext("2d");
-    ctx.scale(ratio * symbol.style.size / 100, ratio * symbol.style.size / 100);
-    ctx.translate(
-      -(symbol.bbox.x1 - symbol.style.strokeWidth - symbol.style.outlineWidth),
-      -(symbol.bbox.y1 - symbol.style.strokeWidth - symbol.style.outlineWidth)
-    );
-    symbol.canvasDraw.call(symbol, ctx, symbol.drawInstructions);
-    return canvas;
-  };
+  
