@@ -12,24 +12,77 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Example:
+http://localhost:3000/SFG-UCI----D?size=60
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+![image](https://user-images.githubusercontent.com/8427513/196964447-aff4d613-fec4-4fb5-bc0e-13d50e15382b.png)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This is using for imagary: https://github.com/spatialillusions/milsymbol
+and all '/' are routed to the 'api/symbol/[symbolcode]'
 
-## Learn More
+you can add more as query parameters:
+( currently i do not support sending this as part of the body, but i will add it at some point )
 
-To learn more about Next.js, take a look at the following resources:
+  additionalInformation?: string;
+  alternateMedal?: boolean;
+  altitudeDepth?: string;
+  auxiliaryEquipmentIndicator?: string;
+  civilianColor?: boolean;
+  colorMode?: ColorMode | string;
+  combatEffectiveness?: string;
+  commonIdentifier?: string;
+  country?: string;
+  direction?: string;
+  dtg?: string;
+  engagementBar?: string;
+  engagementType?: string;
+  equipmentTeardownTime?: string;
+  evaluationRating?: string;
+  fill?: boolean;
+  fillOpacity?: number;
+  fontfamily?: string;
+  frame?: boolean;
+  frameColor?: ColorMode;
+  guardedUnit?: string;
+  headquartersElement?: string;
+  higherFormation?: string;
+  hostile?: string;
+  hqStaffLength?: number;
+  icon?: boolean;
+  iconColor?: ColorMode | string;
+  iffSif?: string;
+  infoBackground?: ColorMode | string;
+  infoBackgroundFrame?: ColorMode | string;
+  infoColor?: ColorMode | string;
+  infoFields?: boolean;
+  infoSize?: number;
+  installationComposition?: string;
+  location?: string;
+  monoColor?: string;
+  outlineColor?: ColorMode | string;
+  outlineWidth?: number;
+  padding?: number;
+  platformType?: string;
+  quantity?: string;
+  reinforcedReduced?: string;
+  sidc?: string;
+  sigint?: string;
+  signatureEquipment?: string;
+  simpleStatusModifier?: boolean;
+  size?: number;
+  specialDesignator?: string;
+  specialHeadquarters?: string;
+  speed?: string;
+  speedLeader?: number;
+  square?: boolean;
+  staffComments?: string;
+  standard?: string;
+  strokeWidth?: number;
+  type?: string;
+  uniqueDesignation?: string;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## TODO:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# symbol-server
+* custom symbols ( add nvg's to a custom folder to expose )
+* sending symbol configuration data as body
