@@ -6,7 +6,7 @@ const nextConfig = {
   output: 'standalone',
   rewrites: async () => [
     {
-      source: ":size/:custom/P-/:symbolcode/False/NONE",
+      source: "/:size/:custom/P-/:symbolcode/False/NONE",
       destination: "/api/symbol/:symbolcode?size=:size",
     },
     {
