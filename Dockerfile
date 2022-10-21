@@ -1,5 +1,5 @@
-# Install dependencies only when needed
 FROM node:14 AS deps
+# FROM node:14 AS deps
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
@@ -30,7 +30,7 @@ RUN npm run build
 RUN ls -la /app
 
 # Production image, copy all the files and run next
-FROM node:14 AS runner
+FROM node:14-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
