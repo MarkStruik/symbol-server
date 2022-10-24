@@ -6,8 +6,12 @@ const nextConfig = {
   output: 'standalone',
   rewrites: async () => [
     {
-      source: "/:size/:custom/P-/:symbolcode/False/NONE",
-      destination: "/api/symbol/:symbolcode?size=:size",
+      source: "/:size/custom/:status/:symbolcode/False/NONE",
+      destination: "http://localhost/ServerSymbology/ServerSymbology.svc/:size/custom/:status/:symbolcode/False/NONE",
+    },
+    {
+      source: "/:size/:custom/:status/:symbolcode/False/NONE",
+      destination: "/api/symbol/:symbolcode?size=:size&staffComments=:status",
     },
     {
       source: "/:symbolcode",
